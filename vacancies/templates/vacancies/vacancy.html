@@ -20,6 +20,7 @@
           <div style="line-height: 1.8;">
             {{ vacancy.description }}
           </div>
+          {% if application_form %}
           {% load crispy_forms_tags %}
           <form method="post" class="card mt-4 mb-3" enctype="multipart/form-data">
             {% csrf_token %}
@@ -40,6 +41,7 @@
               <input type="submit" class="btn btn-primary mt-4 mb-2" value="Отправить отклик">
             </div>
           </form>
+          {% endif %}
         </section>
       </div>
     </div>
