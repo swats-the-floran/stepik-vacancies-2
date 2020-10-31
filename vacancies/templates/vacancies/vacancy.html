@@ -1,0 +1,47 @@
+{% extends "vacancies/base.html" %}
+{% block content %}
+  <main class="container mt-3 pb-5">
+    <div class="row mt-5">
+      <div class="col-12 col-lg-2">
+        {% include 'vacancies/block_previous_page.html' %}
+      </div>
+      <div class="col-12 col-lg-8">
+        <section class="pl-3">
+          <a href="{% url 'companies_element' company.id %}">
+            <img src="{{ media_url }}{{ company.logo }}" width="130" height="80" alt="logo">
+          </a>
+          <div class="d-flex align-items-baseline align-content-baseline">
+            <h1 class="h2 mt-4 font-weight-bold">{{ vacancy.title }}</h1>
+            <p class="m-0 pl-3">{{ vacancy.salary_min }} – {{ vacancy.salary_max }} Р</p>
+          </div>
+          <p class="mt-2">{{ vacancy.skills }}</p>
+          <p class="text-muted mb-4">{{ company.name }} ({{ company.employee_count }} человек),
+            {{ company.location }}</p>
+          <div style="line-height: 1.8;">
+            {{ vacancy.description }}
+          </div>
+          {% load crispy_forms_tags %}
+          <form method="post" class="card mt-4 mb-3" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body mx-3">
+              <p class="h5 mt-3 font-weight-normal">Отозваться на вакансию</p>
+              <div class="form-group">
+                <label class="mb-1 mt-2" for="userName">Вас зовут</label>
+                {{ application_form.written_username|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                <label class="mb-1" for="userPhone">Ваш телефон</label>
+                {{ application_form.written_phone|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                <label class="mb-1" for="userMsg" >Сопроводительное письмо</label>
+                {{ application_form.written_cover_letter|as_crispy_field }}
+              </div>
+              <input type="submit" class="btn btn-primary mt-4 mb-2" value="Отправить отклик">
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+{% endblock %}

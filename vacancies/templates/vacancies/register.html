@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>{{ project_name }}</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <main class="container">
+    <div class="row">
+      <div class="col-8 col-lg-4 offset-2 offset-lg-4">
+        {% load crispy_forms_tags %}
+        <form method="post" class="mt-5">
+          {% csrf_token %}
+          <p class="text-muted">Логин</p>
+          {{ register_form.username|as_crispy_field }}
+          <p class="text-muted">Имя</p>
+          {{ register_form.first_name|as_crispy_field }}
+          <p class="text-muted">Фамилия</p>
+          {{ register_form.last_name|as_crispy_field }}
+          <p class="text-muted">Пароль</p>
+          {{ register_form.password1|as_crispy_field }}
+          <p class="text-muted">Подтверждение пароля</p>
+          {{ register_form.password2|as_crispy_field }}
+          <button type="submit" class="btn btn-primary btn-lg btn-block mt-5">Зарегистрироваться</button>
+        </form>
+        <div class="mt-4 text-center"><p>Есть аккаунт? <a href="{% url 'login_page' %}">Войдите!</a></p></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

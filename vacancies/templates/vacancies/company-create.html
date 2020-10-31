@@ -1,0 +1,65 @@
+{% extends "vacancies/base.html" %}
+{% block content %}
+
+  <main class="container mt-3 pb-5">
+    <section class="col-12 col-lg-8 offset-lg-2 mt-5 card">
+      <div class="card-body px-3 pb-4">
+        <h1 class="h4 pt-2">Моя компания</h1>
+        <p class="mt-2">Пока мы думаем, что вы – частное лицо. Хотите создать карточку компании, разместить информаию и вакансии?</p>
+        {% load crispy_forms_tags %}
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="companyName">Название компании</label>
+                {{ my_company_form.name|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label class="mb-2 text-dark" for="companyLogo">Логотип</label>
+                <div class="row align-items-center">
+                  <div class="col-6">
+                    <img src="{{ media_url }}{{ company.logo }}" alt="logo"
+                         style="max-width: 120px;height: auto;">
+                  </div>
+                  <div class="col-6" style="position: relative;">
+                    <div class="input-group-prepend" style="position: absolute; top: 0;right: 15px;">
+                      <span class="btn btn-info px-4">Загрузить</span>
+                    </div>
+                    <div class="custom-file" style="">
+                      {{ my_company_form.logo }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="companyTeam">Количество человек в компании</label>
+                {{ my_company_form.employee_count|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="companyLocation">География</label>
+                {{ my_company_form.location|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group pb-2">
+            <label class="mb-2 text-dark" for="companyInfo">Информация о&nbsp;компании</label>
+            {{ my_company_form.description|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-info mb-2" value="Создать карточку компании">
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "vacancies/base.html" %}
+{% block content %}
+
+  <main class="container mt-3 pb-5">
+    <section class="col-12 col-lg-8 offset-lg-2 mt-5 card">
+      <div class="card-body px-3 pb-4">
+        <h1 class="h4 pt-2 pb-3">Моё резюме</h1>
+        {% if updated %}
+        <p class="alert alert-info" role="alert">Ваше резюме обновлено!</p>
+        {% endif%}
+        {% load crispy_forms_tags %}
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userName">Имя</label>
+                {{ resume_form.name|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userSurname">Фамилия</label>
+                {{ resume_form.surname|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userReady">Готовность к работе</label>
+                {{ resume_form.status|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userPortfolio">Ожидаемое вознаграждение</label>
+                {{ resume_form.salary|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userSpecialization">Специализация</label>
+                {{ resume_form.specialty|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group pb-2">
+                <label class="mb-2 text-dark" for="userQualification">Квалификация</label>
+                {{ resume_form.grade|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group pb-2">
+            <label class="mb-2 text-dark" for="userEducation">Образование</label>
+            {{ resume_form.education|as_crispy_field }}
+          </div>
+          <div class="form-group pb-2">
+            <label class="mb-2 text-dark" for="userExperience">Опыт работы</label>
+            {{ resume_form.experience|as_crispy_field }}
+          </div>
+          <div class="form-group pb-3">
+            <label class="mb-2 text-dark" for="userPortfolio">Ссылка на портфолио</label>
+            {{ resume_form.portfolio|as_crispy_field }}
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Сохранить">
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}
