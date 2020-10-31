@@ -1,8 +1,8 @@
 from crispy_forms.helper import FormHelper
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.forms import Textarea, FileInput, ChoiceField, ModelChoiceField
+from django.contrib.auth.forms import UserCreationForm
+from django.forms import Textarea, FileInput, ModelChoiceField
 from vacancies.models import Company, Application, Vacancy, Specialty, Resume
 
 
@@ -102,6 +102,7 @@ class VacancyForm(forms.ModelForm):
 
         self.helper = FormHelper()
         self.helper.form_show_labels = False
+
 
 class SearchForm(forms.Form):
 

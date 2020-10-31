@@ -8,6 +8,7 @@ django.setup()
 from vacancies.models import Vacancy, Company, Specialty
 from vacancies.data import vacancies, companies, specialties
 
+
 def populate():
     for company_ in companies:
         Company.objects.create(**company_)

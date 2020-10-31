@@ -21,7 +21,7 @@ def forwards_func(apps, schema_editor):
             password='1234567Q',
         )
         user_.first_name = company.name
-        user_.last_name = last_name='owner'
+        user_.last_name = 'owner'
         user_.save()
         company.owner = user_
         company.save()
@@ -44,4 +44,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(forwards_func, reverse_func),
     ]
-

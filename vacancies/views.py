@@ -1,7 +1,6 @@
-from datetime import date, datetime
+from datetime import datetime
 
-from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
