@@ -1,7 +1,7 @@
 superuser: admin - admin
 other users: f'{company.name}_owner' - 1234567Q
 
-Итоговый проект с курса [https://academy.stepik.org/django](https://academy.stepik.org/django)
+Итоговый проект с курса https://academy.stepik.org/django
 Реализованные задачи:
 * Создание главной страницы с размещением панели поиска, панели рубрик, панели компаний.
 * Создание страницы компании
