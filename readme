@@ -1,2 +1,2 @@
-superuser: admin-admin
-other users: f'company.name'_owner-1234567Q
+superuser: admin - admin
+other users: f'{company.name}_owner' - 1234567Q
